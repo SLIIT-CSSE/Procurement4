@@ -299,8 +299,21 @@
     <Compile Include="Migrations\201810041159407_PaidDateAddedToPaymentTable.Designer.cs">
       <DependentUpon>201810041159407_PaidDateAddedToPaymentTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810042056201_SupplierAddedTOOrders.cs" />
+    <Compile Include="Migrations\201810042056201_SupplierAddedTOOrders.Designer.cs">
+      <DependentUpon>201810042056201_SupplierAddedTOOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810042119286_BankAccountModelAdded.cs" />
+    <Compile Include="Migrations\201810042119286_BankAccountModelAdded.Designer.cs">
+      <DependentUpon>201810042119286_BankAccountModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810042255327_addForeignKeyToPayments.cs" />
+    <Compile Include="Migrations\201810042255327_addForeignKeyToPayments.Designer.cs">
+      <DependentUpon>201810042255327_addForeignKeyToPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Company_Staff_Status.cs" />
     <Compile Include="Models\ConstructionItem.cs" />
@@ -313,6 +326,7 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CompletePaymentViewModel.cs" />
     <Compile Include="ViewModels\NewItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +411,8 @@
     <Content Include="Views\ViewOrders\ViewOrder.cshtml" />
     <Content Include="Views\Payments\SuccessfullPaymentList.cshtml" />
     <Content Include="Views\Payments\PaidItemDetails.cshtml" />
+    <Content Include="Views\Payments\PendingPaymentsList.cshtml" />
+    <Content Include="Views\Payments\PendingPaymentOrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -461,6 +477,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810041159407_PaidDateAddedToPaymentTable.resx">
       <DependentUpon>201810041159407_PaidDateAddedToPaymentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810042056201_SupplierAddedTOOrders.resx">
+      <DependentUpon>201810042056201_SupplierAddedTOOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810042119286_BankAccountModelAdded.resx">
+      <DependentUpon>201810042119286_BankAccountModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810042255327_addForeignKeyToPayments.resx">
+      <DependentUpon>201810042255327_addForeignKeyToPayments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

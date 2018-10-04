@@ -16,5 +16,7 @@ namespace Procurment.Models
         public string AccountNo { get; set; }
         public string SupplierName { get; set; }
         public DateTime PaidDate { get; set;}
+        public BankAccount BankAccount { get; set; }
+        
     }
 }
