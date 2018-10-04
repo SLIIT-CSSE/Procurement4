@@ -10,6 +10,7 @@ namespace Procurment.Controllers
 {
     public class PaymentsController : Controller
     {
+        //access to DB
         private ApplicationDbContext _context;
 
         public PaymentsController()
@@ -22,23 +23,26 @@ namespace Procurment.Controllers
             _context.Dispose();
         }
 
-        // GET: SuccessPayments
+        // Successfully completed payments list interface
         public ViewResult SuccessfullPaymentList()
         {
             var successpayments = _context.Payments.ToList();
             return View(successpayments);
         }
 
+        // Successfully paid order details
         public ActionResult PaidItemDetails()
         {
             return View();
         }
 
+        // Pending payments list
         public ActionResult PendingPaymentsList()
         {
             return View();
         }
 
+        // Complete pending payment
         public ActionResult PendingPaymentOrderDetails()
         {
             var bankAccounts = _context.BankAccounts.ToList();
