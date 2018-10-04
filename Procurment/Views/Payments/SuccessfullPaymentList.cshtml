@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Procurment.Models.Payment>
+@{
+    ViewBag.Title = "SuccessfullPaymentList";
+}
+
+<h2><font color="white"><strong>Successfull Payment List</strong></font></h2>
+
+<div class="container text-center">
+    <button class="btn btn-light btn-active" href="#">Pending Payments</button>
+    <button class="btn btn-info" href="#">Successful Payments</button>
+    <button class="btn btn-light" href="#">Manager Approval</button>
+</div>
+<div class="panel-default">
+    <div class="panel-body" style="background-color:antiquewhite">
+
+    @if (!Model.Any())
+    {
+        <p>We don't have any successfull payments yet</p>
+    }
+
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var successpayment in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(successpayment.OrderId, "Details", "Payments", new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(successP => successpayment.PaidDate, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(successP => successpayment.TotalAmount, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">View</button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+</div>
+</div>
