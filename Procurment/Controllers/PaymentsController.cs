@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Procurment.Models;
+using Procurment.ViewModels;
 
 namespace Procurment.Controllers
 {
@@ -31,6 +32,22 @@ namespace Procurment.Controllers
         public ActionResult PaidItemDetails()
         {
             return View();
+        }
+
+        public ActionResult PendingPaymentsList()
+        {
+            return View();
+        }
+
+        public ActionResult PendingPaymentOrderDetails()
+        {
+            var bankAccounts = _context.BankAccounts.ToList();
+            var viewModel = new CompletePaymentViewModel
+            {
+                BankAccounts = bankAccounts
+            };
+             
+            return View(viewModel);
         }
 
 
