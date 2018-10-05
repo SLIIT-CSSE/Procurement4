@@ -14,5 +14,6 @@ namespace Procurment.Dtos
         public float TotalAmount { get; set; }
         public string AccountNo { get; set; }
         public string SupplierName { get; set; }
+        public DateTime PaidDate { get; set; }
     }
 }
