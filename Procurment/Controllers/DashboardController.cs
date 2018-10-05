@@ -13,5 +13,14 @@ namespace Procurment.Controllers
         {
             return View();
         }
+
+        public ActionResult Supplier()
+        {
+            return View();
+        }
+        public ActionResult Manager()
+        {
+            return View();
+        }
     }
 }

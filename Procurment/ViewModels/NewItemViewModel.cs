@@ -11,5 +11,9 @@ namespace Procurment.ViewModels
         public IEnumerable<Category> Categories { get; set; }
         public ConstructionItem ConstructionItem { get; set; }
 
+
+        public IEnumerable<ConstructionItem> ConstructionItems { get; set; }
+        public Order Orders { get; set; }
+
     }
 }
