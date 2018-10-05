@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Procurment.Models.Order>
+@{
+    ViewBag.Title = "DeptApprovedOrders";
+}
+
+<h2><font color="white"><b>Department Approved Orders!!!</b></font></h2>
+<br />
+<br />
+<div class="panel-default">
+    <div class="panel-body" style="background-color:antiquewhite">
+        @if (!Model.Any())
+        {
+            <p>We don't have any orders yet</p>
+        }
+
+        else
+        {
+
+            <table id="orders" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Sequential Reference</th>
+                        <th>Company Status</th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Total Amount</th>
+                        <th>Date</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                {
+                    if (order.CompanyStatus == "Approved")
+                    {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => order.OrderId, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => order.Sequential_Reference, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => order.CompanyStatus, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => order.ItemName, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => order.Quanity, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => order.TotalAmount, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => order.Date, new { @class = "form-control" })
+                                </td>
+                              
+                            </tr>
+
+                        }
+                    }
+
+                </tbody>
+
+            </table>
+        }
+    </div>
+</div>
+
+
