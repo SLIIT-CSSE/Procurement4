@@ -37,9 +37,10 @@ namespace Procurment.Controllers
         }
 
         // Pending payments list
-        public ActionResult PendingPaymentsList()
+        public ViewResult PendingPaymentsList()
         {
-            return View();
+            var pendingPayments = _context.Orders.ToList();
+            return View(pendingPayments);
         }
 
         // Complete pending payment
@@ -52,6 +53,11 @@ namespace Procurment.Controllers
             };
              
             return View(viewModel);
+        }
+
+        public ActionResult PendingPaymentOrderItems()
+        {
+            return View();
         }
 
 
