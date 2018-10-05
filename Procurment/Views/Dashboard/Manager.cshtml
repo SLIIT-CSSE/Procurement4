@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Manager";
+}
+
+<h2 class="text-center">Manager Dashboard</h2>
+
+<head>
+    <style>
+        #hotline1 {
+            background-color: #001433;
+            border: 2px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 70px;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            padding: 55px 5px 55px 10px;
+            border: 1px solid #001433;
+        }
+
+        a.my-class { 
+            color: #ffffff; 
+            text-decoration:none;
+            font-size:xx-large
+        }
+        a.my-class:active { color:antiquewhite }
+        a.my-class:link { color: #999999 }
+        a.my-class:visited { color: #CCCCCC }
+    </style>
+
+</head>
+
+<br />
+<div class="jumbotron">
+
+
+    <h2 class="text-center">Manager Dashboard</h2>
+
+    <div class="container text-center">
+
+        <div class="row">
+
+            <a>
+                <div class="col-sm-5" id="hotline1">
+                    @Html.ActionLink("View Pending Orders", "SupPendingorder", "ViewOrders", new { @class = "my-class" })
+                    <h3>Payments</h3>
+                </div>
+            </a>
+            <a>
+                <div class="col-sm-5" id="hotline1">
+                    @Html.ActionLink("View Pending Orders", "SupPendingorder", "ViewOrders", new { @class = "my-class" })
+                    <h3>Add Items</h3>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+            <a>
+                <div class="col-sm-5" id="hotline1">
+                    @Html.ActionLink("View Pending Orders", "SupPendingorder", "ViewOrders", new { @class = "my-class" })
+                    <h3>View Items</h3>
+                </div>
+            </a>
+            <a>
+                <div class="col-sm-5" id="hotline1">
+                    @Html.ActionLink("View Pending Orders", "SupPendingorder", "ViewOrders", new { @class = "my-class" })
+                    <h3>My notifications</h3>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+

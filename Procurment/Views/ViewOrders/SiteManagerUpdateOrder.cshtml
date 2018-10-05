@@ -1,10 +1,21 @@
 ﻿@model IEnumerable<Procurment.Models.Order>
 @{
-    ViewBag.Title = "SupPreviousorder";
+    ViewBag.Title = "SiteManagerUpdateOrder";
 }
+
 <br /><br />
 
-
+<div class="container text-right">
+    <button class="btn btn-light btn-active">
+        @Html.ActionLink("View Orders", "SiteManagerPreviousorder", "ViewOrders", new { @class = "my-class" })
+    </button>
+    <button class="btn btn-light btn-active">
+        @Html.ActionLink("Update Orders", "SiteManagerUpdateOrder", "ViewOrders", new { @class = "my-class" })
+    </button>
+    <button class="btn btn-light">
+        @Html.ActionLink("Delete Orders", "SiteManagerDeleteOrder", "ViewOrders", new { @class = "my-class" })
+    </button>
+</div>
 
 <div class="panel-default">
     <div class="panel-body" style="background-color:antiquewhite">
@@ -29,19 +40,19 @@
                         <th>Amount</th>
                         <th>Company Status</th>
                         <th>Supplier Status</th>
-                        <th>Delete</th>
-                        
+                        <th>Update</th>
                     </tr>
 
                 </thead>
                 <tbody>
                     @foreach (var order in Model)
                     {
-                        if (order.SupplierStatus == "Approved" || order.SupplierStatus == "Rejected")
-                        {
+                       if ((order.CompanyStatus == "Pending") || (order.CompanyStatus == "Approved" && order.SupplierStatus == "Rejected"))
+                       {
                         <tr>
                             <td>
                                 @Html.ActionLink(order.OrderId, "Details", "Orders", new { @class = "form-control" })
+                                
                             </td>
                             <td>
                                 @Html.DisplayFor(x => order.Date, new { @class = "form-control" })
@@ -56,7 +67,7 @@
                                 @Html.DisplayFor(x => order.SupplierStatus, new { @class = "form-control" })
                             </td>
                             <td>
-                                <button data-order-id="@order.OrderId" class="btn btn-danger js-delete text-center">Delete</button>
+                                <button data-order-id="@order.OrderId" class="js-delete btn btn-primary text-center">Update</button>
                             </td>
                         </tr>
 
@@ -75,22 +86,10 @@
 {
     <script>
         $(document).ready(function () {
-
             $("#orders").DataTable();
-
-            $("#orders .js-delete").on("click", function () {
-                if (confirm("Are you sure you want to delete?")) {
-                    $.ajax({
-                        url: "/api/ordermanage/" + $(this).attr("data-order-id"),
-                        method: "DELETE",
-                        success: function () {
-                            console.log("Success");
-                        }
-                    });
-                }
-            });
         });
     </script>
 
 
 }
+

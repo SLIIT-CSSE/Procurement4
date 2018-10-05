@@ -1,29 +1,122 @@
-﻿
+﻿@model Procurment.ViewModels.NewItemViewModel
+
 @{
     ViewBag.Title = "AddMyOrder";
 }
 
-<br /><br /><br />
-<div class="jumbotron col-md-4 text-center">
-    <h2>Add My Order</h2>
-    <br />
+<head>
 
-    <select class="form-control" id="StudentGender" name="StudentGender">
-        <option>Item</option>
-        <option>Male</option>
-        <option>Female</option>
-    </select><br />
 
-    <input class="form-control"
-           id="myTextBox"
-           name="myTextBox"
-           type="text"
-           value="Quantity" /><br />
+</head>
 
-    <p><a class="btn btn-primary">Add</a></p>
+<br /><br />
+
+<body onload="addDate();">
 
 
 
-</div>
+    <div class="jumbotron col-sm-12">
+        <h2 class="text-center">Add Order</h2>
+        <br />
+        @using (Html.BeginForm("createOrders", "AddOrder"))
+        {
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Orders.Date)
+                @Html.TextBoxFor(m => m.Orders.Date, new { @class = "form-control", @id = "date", @readonly = "readonly" })
 
 
+
+            </div>
+
+
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <div class="form-group">
+
+                            @Html.LabelFor(m => m.Orders.ItemName)
+                            @Html.DropDownListFor(m => m.Orders.ItemName, new SelectList(Model.ConstructionItems, "ItemId", "ItemName"), "Select Item", new { @class = "form-control", @id = "consItems" })
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+
+                            @Html.LabelFor(m => m.ConstructionItem.Price)
+                            @Html.TextBoxFor(m => m.ConstructionItem.Price, new { @class = "form-control", @id = "price" })
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+
+                            @Html.LabelFor(m => m.Orders.Quantity)
+                            @Html.TextBoxFor(m => m.Orders.Quantity, new { @class = "form-control", @id = "qty" })
+
+                        </div>
+                    </td>
+
+                    <td>
+                        &nbsp;<br />
+                        <input type="button" class="btn btn-primary" value="Add" onclick="calc()" />
+                    </td>
+                </tr>
+
+            </table>
+
+            <br />
+            <table>
+                <tr>
+                    
+                    
+                    <td><label>@Html.LabelFor(m => m.Orders.TotalAmount)&nbsp;&nbsp;&nbsp;</label></td>
+                    <td style="padding-left:4em">
+                        
+                        @Html.TextBoxFor(m => m.Orders.Quantity, new { @class = "form-control", @id = "output" })
+                    </td>
+                    <td style="padding-left:4em"><input type="submit" class="btn btn-primary" value="Save Order" /></td>
+                </tr>
+            </table>
+
+        }
+
+        @section Scripts{
+
+            <script type="text/javascript">
+
+
+
+                function myFunction() {
+                    document.getElementById('demo').value = Date();
+                }
+
+
+                function calc() {
+
+                    var textValue1 = document.getElementById('qty').value;
+                    var textValue2 = document.getElementById('price').value;
+
+                    document.getElementById('output').value = textValue1 * textValue2;
+                }
+
+                function addDate() {
+                    date = new Date();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var year = date.getFullYear();
+
+                    if (document.getElementById('date').value == '') {
+                        document.getElementById('date').value = day + '-' + month + '-' + year;
+                    }
+                }
+
+            </script>
+
+        }
+
+
+
+    </div>
+
+</body>
