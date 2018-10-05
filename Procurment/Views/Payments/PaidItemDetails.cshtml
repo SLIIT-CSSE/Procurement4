@@ -1,6 +1,6 @@
 ﻿@model Procurment.Models.Payment
 @{
-    ViewBag.Title = "PaidItemDetails";
+    ViewBag.Title = Model.OrderId;
 }
 
 <h2><font color="white"><strong>Successfully Paid Order Details</strong></font></h2>
@@ -37,11 +37,17 @@
                 @Html.TextBoxFor(paidOrder => paidOrder.TotalAmount, new { @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-success">View</button>
-            <button type="submit" class="btn btn-light"><a href="SuccessfullPaymentList">Back</a></button>
+            <button class="btn btn-light btn-active">
+                @Html.ActionLink("Back", "SuccessfullPaymentList", "Payments", new { @class = "my-class" })
+            </button>
         </div>
     </div>
 
 }
+
+<ul>    
+    <li>Amount: @Model.TotalAmount</li>
+</ul>
 
 
 

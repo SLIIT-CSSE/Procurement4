@@ -31,9 +31,14 @@ namespace Procurment.Controllers
         }
 
         // Successfully paid order details
-        public ActionResult PaidItemDetails()
+        public ActionResult PaidItemDetails(string id)
         {
-            return View();
+            var successpayment = _context.Payments.SingleOrDefault(s => s.OrderId == id);
+
+            if(successpayment == null)
+                return HttpNotFound();
+
+            return View(successpayment);
         }
 
         // Pending payments list
@@ -44,15 +49,21 @@ namespace Procurment.Controllers
         }
 
         // Complete pending payment
-        public ActionResult PendingPaymentOrderDetails()
+        public ActionResult PendingPaymentOrderDetails(string id)
         {
+            //to load all bank account details to drop down
             var bankAccounts = _context.BankAccounts.ToList();
             var viewModel = new CompletePaymentViewModel
             {
                 BankAccounts = bankAccounts
             };
-             
-            return View(viewModel);
+
+            //load relevent details in order tble to ui
+            var pendingPayment = _context.Orders.SingleOrDefault(p => p.OrderId == id);
+            if(pendingPayment == null)
+                return HttpNotFound();
+
+            return View(pendingPayment);
         }
 
         public ActionResult PendingPaymentOrderItems()

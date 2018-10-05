@@ -1,8 +1,8 @@
-﻿<!--use CompletePaymentViewModel to get data from all three BankAccount,Order and Payment models-->
-@model Procurment.ViewModels.CompletePaymentViewModel
+﻿
+@model Procurment.Models.Order
 
 @{
-    ViewBag.Title = "PendingPaymentOrderDetails";
+    ViewBag.Title = Model.OrderId;
 }
 
 <h2><font color="white"><strong>Pending Payment Order Details</strong></font></h2>
@@ -22,25 +22,38 @@
         <div class="panel-body" style="background-color:antiquewhite">
 
             <div class="form-group">
-                @Html.LabelFor(pendingOrder => pendingOrder.Order.OrderId)
-                @Html.TextBoxFor(pendingOrder => pendingOrder.Order.OrderId, new { @class = "form-control" })
+                @Html.LabelFor(pendingOrder => pendingOrder.OrderId)
+                @Html.TextBoxFor(pendingOrder => pendingOrder.OrderId, new { @class = "form-control" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(pendingOrder => pendingOrder.Order.Supplier)
-                @Html.TextBoxFor(pendingOrder => pendingOrder.Order.Supplier, new { @class = "form-control" })
+                @Html.LabelFor(pendingOrder => pendingOrder.Supplier)
+                @Html.TextBoxFor(pendingOrder => pendingOrder.Supplier, new { @class = "form-control" })
             </div>
             <div class="form-group">
-                @Html.LabelFor(pendingOrder => pendingOrder.Payment.AccountNo)
-                @Html.DropDownListFor(pendingOrder => pendingOrder.Payment.AccountNo,new SelectList(Model.BankAccounts,"AccountNo", "AccountNo"),"Select Bank Account", new { @class = "form-control" })
+                <p><strong>Bank Account</strong></p>
+                <select>
+                    <option value="Name" selected>Select Bank Account</option>
+                    <option value="asc">Peoples' Bank - 0011223344</option>
+                    <option value="desc">BOC - 2143657687</option>
+
+                </select>
+
+                @*
+                    Load all accounts in bankaccount table to dropdown
+
+                    @Html.LabelFor(pendingOrder => pendingOrder.Payment.AccountNo)
+                    @Html.DropDownListFor(pendingOrder => pendingOrder.Payment.AccountNo,new SelectList(Model.BankAccounts,"AccountNo", "AccountNo"),"Select Bank Account", new { @class = "form-control" })*@
             </div>
             <div class="form-group">
-                @Html.LabelFor(pendingOrder => pendingOrder.Order.TotalAmount)
-                @Html.TextBoxFor(pendingOrder => pendingOrder.Order.TotalAmount, new { @class = "form-control" })
+                @Html.LabelFor(pendingOrder => pendingOrder.TotalAmount)
+                @Html.TextBoxFor(pendingOrder => pendingOrder.TotalAmount, new { @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-success"><a href="PendingPaymentOrderItems">View</a></button>
             <button type="submit" class="btn btn-danger">Pay Now</button>
-            <button type="submit" class="btn btn-light"><a href="PendingPaymentsList">Back</a></button>
-            
+            <button class="btn btn-light btn-active">
+                @Html.ActionLink("Back", "PendingPaymentsList", "Payments", new { @class = "my-class" })
+            </button>
+
         </div>
     </div>
 

@@ -312,6 +312,10 @@
     <Compile Include="Migrations\201810042255327_addForeignKeyToPayments.Designer.cs">
       <DependentUpon>201810042255327_addForeignKeyToPayments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810050823423_OrderTableAddQuantity.cs" />
+    <Compile Include="Migrations\201810050823423_OrderTableAddQuantity.Designer.cs">
+      <DependentUpon>201810050823423_OrderTableAddQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BankAccount.cs" />
@@ -661,6 +665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810042255327_addForeignKeyToPayments.resx">
       <DependentUpon>201810042255327_addForeignKeyToPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810050823423_OrderTableAddQuantity.resx">
+      <DependentUpon>201810050823423_OrderTableAddQuantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

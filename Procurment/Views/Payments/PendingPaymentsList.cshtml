@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-success">
-                                    @Html.ActionLink("View", "PendingPaymentOrderDetails", "Payments", new { @class = "my-class" })
+                                    @Html.ActionLink("View", "PendingPaymentOrderDetails", "Payments", new { id = order.OrderId },null)
                                 </button>
                             </td>
                         </tr>

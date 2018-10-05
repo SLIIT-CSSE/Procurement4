@@ -40,7 +40,7 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(successP => successpayment.OrderId,  new { @class = "form-control" })
+                            @Html.DisplayFor(successP => successpayment.OrderId, new { @class = "form-control" })
                         </td>
                         <td>
                             @Html.DisplayFor(successP => successpayment.PaidDate, new { @class = "form-control" })
@@ -49,7 +49,12 @@
                             @Html.DisplayFor(successP => successpayment.TotalAmount, new { @class = "form-control" })
                         </td>
                         <td>
-                            <button type="submit" class="btn btn-success"><a href="PaidItemDetails">View</a></button>
+                            
+
+                            <button class="btn btn-success btn-active">
+                             @Html.ActionLink("View", "PaidItemDetails", "Payments", new { id = successpayment.OrderId },null)
+                            </button>
+                        
                         </td>
                     </tr>
                 }
