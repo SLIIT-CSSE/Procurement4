@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "PendingPaymentOrderItems";
+}
+
+<h2><font color="white"><strong>Order Items</strong></font></h2>
+
+<div class="container text-center">
+    <button class="btn btn-light btn-active">
+        @Html.ActionLink("Pending Payments", "PendingPaymentOrderItems", "Payments", new { @class = "my-class" })
+    </button>
+    <button class="btn btn-info btn-active">
+        @Html.ActionLink("Successfull Payments", "SuccessfullPaymentList", "Payments", new { @class = "my-class" })
+    </button>
+
+</div>
+<div class="panel-default">
+    <div class="panel-body" style="background-color:antiquewhite">
+        <!--load details in payment DB to a table with interface loading-->
+       
+            <table id="orderItems" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                         <tr>
+                             <td>Cement</td>
+                             <td>Bag</td>
+                             <td>250</td>
+                             <td>125000</td>
+                        </tr>
+                    <tr>
+                        <td>Ion</td>
+                        <td>Beem</td>
+                        <td>600</td>
+                        <td>115000</td>
+                    </tr>
+                    <tr>
+                        <td>Sand</td>
+                        <td>Cube</td>
+                        <td>5</td>
+                        <td>12500</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        <button type="submit" class="btn btn-light"><a href="PendingPaymentOrderDetails">Back</a></button>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#orderItems").DataTable();
+
+        });
+    </script>
+}

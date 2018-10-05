@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
-namespace Procurment.Models
+namespace Procurment.Dtos
 {
-    public class Payment
+    public class PaymentDto
     {
-        [Key]
         public string PaymentId { get; set; }
-        public Order Order { get; set; }
+        
         public string OrderId { get; set; }
         public float TotalAmount { get; set; }
         public string AccountNo { get; set; }
         public string SupplierName { get; set; }
-        public DateTime PaidDate { get; set;}
-        public BankAccount BankAccount { get; set; }
-        
+        public DateTime PaidDate { get; set; }
     }
 }

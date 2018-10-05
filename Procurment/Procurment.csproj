@@ -212,6 +212,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
 
+    <Compile Include="App_Start\MappingProfile.cs" />
+
     <Compile Include="App_Start\MappingSupplierOrderProfile.cs" />
 
 
@@ -220,11 +222,21 @@
     <Compile Include="App_Start\MappingSearchProfile.cs" />
 
 
+
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddOrderController.cs" />
+
+    <Compile Include="Controllers\Api\PaymentsController.cs" />
+    <Compile Include="Controllers\Api\PendingPaymentsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\ViewOrdersController.cs" />
+    <Compile Include="Dtos\PaymentDto.cs" />
 
     <Compile Include="Controllers\Api\SuppliersController.cs" />
 
@@ -247,6 +259,7 @@
     <Compile Include="Dtos\OrdersDto.cs" />
 
     <Compile Include="Dtos\OrderDto.cs" />
+
 
 
     <Compile Include="Global.asax.cs">
@@ -317,6 +330,32 @@
       <DependentUpon>201810031217171_addStafffk.cs</DependentUpon>
     </Compile>
 
+    <Compile Include="Migrations\201810040548516_SupplierName_added_to_Payments.cs" />
+    <Compile Include="Migrations\201810040548516_SupplierName_added_to_Payments.Designer.cs">
+      <DependentUpon>201810040548516_SupplierName_added_to_Payments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810041159407_PaidDateAddedToPaymentTable.cs" />
+    <Compile Include="Migrations\201810041159407_PaidDateAddedToPaymentTable.Designer.cs">
+      <DependentUpon>201810041159407_PaidDateAddedToPaymentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810042056201_SupplierAddedTOOrders.cs" />
+    <Compile Include="Migrations\201810042056201_SupplierAddedTOOrders.Designer.cs">
+      <DependentUpon>201810042056201_SupplierAddedTOOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810042119286_BankAccountModelAdded.cs" />
+    <Compile Include="Migrations\201810042119286_BankAccountModelAdded.Designer.cs">
+      <DependentUpon>201810042119286_BankAccountModelAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810042255327_addForeignKeyToPayments.cs" />
+    <Compile Include="Migrations\201810042255327_addForeignKeyToPayments.Designer.cs">
+      <DependentUpon>201810042255327_addForeignKeyToPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810050823423_OrderTableAddQuantity.cs" />
+    <Compile Include="Migrations\201810050823423_OrderTableAddQuantity.Designer.cs">
+      <DependentUpon>201810050823423_OrderTableAddQuantity.cs</DependentUpon>
+    </Compile>
+
+
     <Compile Include="Migrations\201810050959032_UpdateOrdersRecords.cs" />
     <Compile Include="Migrations\201810050959032_UpdateOrdersRecords.Designer.cs">
       <DependentUpon>201810050959032_UpdateOrdersRecords.cs</DependentUpon>
@@ -352,8 +391,10 @@
 
 
     </Compile>
+
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Company_Staff_Status.cs" />
     <Compile Include="Models\ConstructionItem.cs" />
@@ -366,6 +407,7 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CompletePaymentViewModel.cs" />
     <Compile Include="ViewModels\NewItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -622,6 +664,13 @@
     <Content Include="Views\ViewOrders\SupRejectedorder.cshtml" />
     <Content Include="Views\ViewOrders\ViewOrder.cshtml" />
 
+    <Content Include="Views\Payments\SuccessfullPaymentList.cshtml" />
+    <Content Include="Views\Payments\PaidItemDetails.cshtml" />
+    <Content Include="Views\Payments\PendingPaymentsList.cshtml" />
+    <Content Include="Views\Payments\PendingPaymentOrderDetails.cshtml" />
+    <Content Include="Views\Payments\PendingPaymentOrderItems.cshtml" />
+
+
     <Content Include="Views\ViewSuppliersOrders\viewOrders.cshtml" />
     <Content Include="Views\ViewSuppliersOrders\Details.cshtml" />
     <Content Include="Views\ViewSuppliersOrders\viewApproved.cshtml" />
@@ -636,6 +685,7 @@
     <Content Include="Views\SearchOrders\SearchDeptOrder.cshtml" />
     <Content Include="Views\SearchOrders\DeptRejectOrders.cshtml" />
     <Content Include="Views\SearchOrders\DeptApprovedOrders.cshtml" />
+
 
 
   </ItemGroup>
@@ -698,6 +748,26 @@
       <DependentUpon>201810031217171_addStafffk.cs</DependentUpon>
     </EmbeddedResource>
 
+    <EmbeddedResource Include="Migrations\201810040548516_SupplierName_added_to_Payments.resx">
+      <DependentUpon>201810040548516_SupplierName_added_to_Payments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810041159407_PaidDateAddedToPaymentTable.resx">
+      <DependentUpon>201810041159407_PaidDateAddedToPaymentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810042056201_SupplierAddedTOOrders.resx">
+      <DependentUpon>201810042056201_SupplierAddedTOOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810042119286_BankAccountModelAdded.resx">
+      <DependentUpon>201810042119286_BankAccountModelAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810042255327_addForeignKeyToPayments.resx">
+      <DependentUpon>201810042255327_addForeignKeyToPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810050823423_OrderTableAddQuantity.resx">
+      <DependentUpon>201810050823423_OrderTableAddQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+
+
     <EmbeddedResource Include="Migrations\201810050959032_UpdateOrdersRecords.resx">
       <DependentUpon>201810050959032_UpdateOrdersRecords.cs</DependentUpon>
 
@@ -723,6 +793,7 @@
     <EmbeddedResource Include="Migrations\201810050901083_updateordertable.resx">
       <DependentUpon>201810050901083_updateordertable.cs</DependentUpon>
     </EmbeddedResource>
+
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Procurment.Models.Order>
+@{
+    ViewBag.Title = "PendingPaymentsList";
+}
+
+<h2><font color="white"><strong>Pending Payments List</strong></font></h2>
+
+<div class="container text-center">
+    <button class="btn btn-light btn-active">
+        @Html.ActionLink("Pending Payments", "PendingPaymentsList", "Payments", new { @class = "my-class" })
+    </button>
+    <button class="btn btn-info btn-active">
+        @Html.ActionLink("Successfull Payments", "SuccessfullPaymentList", "Payments", new { @class = "my-class" })
+    </button>
+
+</div>
+
+<div class="panel-default">
+    <div class="panel-body" style="background-color:antiquewhite">
+
+        @if (!Model.Any())
+        {
+        <!--message when pending table is empty-->
+            <p>We don't have any pending payments yet</p>
+        }
+        else
+        {
+        <!--load details in order DB when supplier has approved order, to a table with interface loading-->
+            <table id="pendingPayments" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var order in Model)
+                    {
+                        if(order.SupplierStatus != "Pending")
+                        { 
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(successP => order.OrderId, new { @class = "form-control" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(successP => order.Date, new { @class = "form-control" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(successP => order.TotalAmount, new { @class = "form-control" })
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success">
+                                    @Html.ActionLink("View", "PendingPaymentOrderDetails", "Payments", new { id = order.OrderId },null)
+                                </button>
+                            </td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+        </div>
+    </div>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            $("#pendingPayments").DataTable();
+
+        });
+    </script>
+}
