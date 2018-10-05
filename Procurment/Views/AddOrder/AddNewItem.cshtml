@@ -4,56 +4,73 @@
     ViewBag.Title = "AddNewItem";
 }
 
-<br /><br /><br />
-<div class="jumbotron col-md-4 text-center">
-    <h2>Add New Item</h2>
-    <br />
-
-    @using (Html.BeginForm("create", "AddOrder"))
-    {
-        <div class="form-group">
-
-            @Html.Label("Item Id", new { style = "color:#ff0000" })
+<br /><br />
+<h2><font color="white"><b>Add New Item</b></font></h2>
+<br />
 
 
-            @Html.TextBoxFor(Model => Model.ConstructionItem.ItemId, new { @class = "form-control", @placeholder = "Item Id" })
+<div class="row">
+    <div class="panel-default col-md-4">
+        <div class="panel-body" style="background-color:antiquewhite">
+
+            <br />
+
+
+            @using (Html.BeginForm("create", "AddOrder"))
+            {
+                <div class="form-group">
+
+                    <label>Item Category</label>
+                    @Html.TextBoxFor(Model => Model.ConstructionItem.ItemId, new { @class = "form-control", @placeholder = "Item Id" })
+                </div>
+
+                <div class="form-group">
+                    <label>Item Name</label>
+                    @Html.TextBoxFor(Model => Model.ConstructionItem.ItemName, new { @class = "form-control", @placeholder = "Item Name" })
+                </div>
+
+                <div class="form-group">
+                    <label>Item Category</label>
+                    @Html.DropDownListFor(Model => Model.ConstructionItem.CategoryId, new SelectList(Model.Categories, "CategoryId", "CategoryName"), "Select Category", new { @class = "form-control", @placeholder = "Item Category" })
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    @Html.TextBoxFor(Model => Model.ConstructionItem.Price, new { @class = "form-control", @placeholder = "Item Price" })<br />
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(Model => Model.ConstructionItem.IsRestricted) Restricted Item<br />
+                    </label>
+
+                </div>
+
+
+                <p><input type="submit" value="Submit" class="btn btn-primary" /></p>
+
+            }
+
+
+
+        </div>
         </div>
 
-        <div class="form-group">
-            <label>Item Name</label>
-            @Html.TextBoxFor(Model => Model.ConstructionItem.ItemName, new { @class = "form-control", @placeholder = "Item Name" })
+    <div class="col-md-8">
+        
+        <div class="panel-default">
+            <div class="panel-body" style="background-color:antiquewhite">
+
+                
+                
+
+
+            </div>
         </div>
 
-        <div class="form-group">
-            <label>Item Category</label>
-            @Html.DropDownListFor(Model => Model.ConstructionItem.CategoryId, new SelectList(Model.Categories, "CategoryId", "CategoryName"), "Select Category", new { @class = "form-control", @placeholder = "Item Category" })
-        </div>
+    </div>
 
-        <div class="form-group">
-            <label>Price</label>
-            @Html.TextBoxFor(Model => Model.ConstructionItem.Price, new { @class = "form-control", @placeholder = "Item Price" })<br />
-        </div>
-
-        <div class="checkbox">
-            <label>
-                @Html.CheckBoxFor(Model => Model.ConstructionItem.IsRestricted) Restricted Item<br />
-            </label>
 
         </div>
-
-
-        <p><input type="submit" value="Submit" class="btn btn-primary" /></p>
-
-    }
-
-
-
-</div>
-
-<div class="col-md-4">
-</div>
-
-
-
 
 

@@ -212,9 +212,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
 
+    <Compile Include="App_Start\MappingSupplierOrderProfile.cs" />
+
+
     <Compile Include="App_Start\MappingProfileNew.cs" />
 
     <Compile Include="App_Start\MappingSearchProfile.cs" />
+
 
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -222,9 +226,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddOrderController.cs" />
 
+    <Compile Include="Controllers\Api\SuppliersController.cs" />
+
+
     <Compile Include="Controllers\Api\OrderManageController.cs" />
 
     <Compile Include="Controllers\Api\ViewOrdersController.cs" />
+
 
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,9 +240,14 @@
     <Compile Include="Controllers\SearchOrdersController.cs" />
     <Compile Include="Controllers\ViewOrdersController.cs" />
 
+    <Compile Include="Controllers\ViewSuppliersOrdersController.cs" />
+    <Compile Include="Dtos\SupplierOrderDto.cs" />
+
+
     <Compile Include="Dtos\OrdersDto.cs" />
 
     <Compile Include="Dtos\OrderDto.cs" />
+
 
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -304,6 +317,11 @@
       <DependentUpon>201810031217171_addStafffk.cs</DependentUpon>
     </Compile>
 
+    <Compile Include="Migrations\201810050959032_UpdateOrdersRecords.cs" />
+    <Compile Include="Migrations\201810050959032_UpdateOrdersRecords.Designer.cs">
+      <DependentUpon>201810050959032_UpdateOrdersRecords.cs</DependentUpon>
+
+
     <Compile Include="Migrations\201810032342407_orderItemAddDate.cs" />
     <Compile Include="Migrations\201810032342407_orderItemAddDate.Designer.cs">
       <DependentUpon>201810032342407_orderItemAddDate.cs</DependentUpon>
@@ -331,6 +349,7 @@
     <Compile Include="Migrations\201810050901083_updateordertable.cs" />
     <Compile Include="Migrations\201810050901083_updateordertable.Designer.cs">
       <DependentUpon>201810050901083_updateordertable.cs</DependentUpon>
+
 
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
@@ -603,6 +622,11 @@
     <Content Include="Views\ViewOrders\SupRejectedorder.cshtml" />
     <Content Include="Views\ViewOrders\ViewOrder.cshtml" />
 
+    <Content Include="Views\ViewSuppliersOrders\viewOrders.cshtml" />
+    <Content Include="Views\ViewSuppliersOrders\Details.cshtml" />
+    <Content Include="Views\ViewSuppliersOrders\viewApproved.cshtml" />
+    <Content Include="Views\ViewSuppliersOrders\viewReject.cshtml" />
+
     <Content Include="Views\Dashboard\Supplier.cshtml" />
     <Content Include="Views\Dashboard\Manager.cshtml" />
     <Content Include="Views\ViewOrders\SiteManagerPreviousorder.cshtml" />
@@ -612,6 +636,7 @@
     <Content Include="Views\SearchOrders\SearchDeptOrder.cshtml" />
     <Content Include="Views\SearchOrders\DeptRejectOrders.cshtml" />
     <Content Include="Views\SearchOrders\DeptApprovedOrders.cshtml" />
+
 
   </ItemGroup>
   <ItemGroup />
@@ -673,6 +698,10 @@
       <DependentUpon>201810031217171_addStafffk.cs</DependentUpon>
     </EmbeddedResource>
 
+    <EmbeddedResource Include="Migrations\201810050959032_UpdateOrdersRecords.resx">
+      <DependentUpon>201810050959032_UpdateOrdersRecords.cs</DependentUpon>
+
+
     <EmbeddedResource Include="Migrations\201810032342407_orderItemAddDate.resx">
       <DependentUpon>201810032342407_orderItemAddDate.cs</DependentUpon>
     </EmbeddedResource>
@@ -693,7 +722,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810050901083_updateordertable.resx">
       <DependentUpon>201810050901083_updateordertable.cs</DependentUpon>
-
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
