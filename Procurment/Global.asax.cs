@@ -8,6 +8,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
+using Procurment.App_Start;
 
 namespace Procurment
 {
@@ -15,7 +17,11 @@ namespace Procurment
     {
         protected void Application_Start()
         {
+
+            Mapper.Initialize(c => c.AddProfile<MappingProfileNew>());
+
             Mapper.Initialize(c => c.AddProfile<MappingSearchProfile>());
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

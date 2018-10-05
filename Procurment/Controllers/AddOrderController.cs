@@ -22,9 +22,18 @@ namespace Procurment.Controllers
         }
 
         // GET: AddOrder
+        
         public ActionResult AddMyOrder()
         {
-            return View();
+
+            var itemNames = _context.ConstructionItems.ToList();
+            var viewModel = new NewItemViewModel
+            {
+                ConstructionItems = itemNames
+            };
+
+            return View(viewModel);
+        
         }
 
         public ActionResult AddNewItem()
@@ -43,6 +52,16 @@ namespace Procurment.Controllers
             _context.ConstructionItems.Add(constructionitem);
             _context.SaveChanges();
             return RedirectToAction("AddNewItem", "AddOrder");
+        }
+
+        
+
+        [HttpPost]
+        public ActionResult createOrders(Order orders)
+        {
+            _context.Orders.Add(orders);
+            _context.SaveChanges();
+            return RedirectToAction("AddMyOrder", "AddOrder");
         }
     }
 }
